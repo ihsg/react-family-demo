@@ -1,0 +1,26 @@
+# ignore vagrant folder
+.vagrant/
+
+# ignore idea folder/files
+.idea/
+.vscode
+
+build/
+
+# mac OS 
+.DS_Store
+
+
+# ignore node/npm generated folders/files
+node_modules/
+npm-debug.log
+
+.cache
+dist/
+build/
+vendor/
+stats.json
+
+# ignore all generated language files
+src/**/components/**/*.json
+src/**/languages/whitelist_*.json
