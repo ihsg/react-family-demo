@@ -1,11 +1,11 @@
 import callApi from './callApi'
-const path = 'banners'
+const path = 'bannersss'
 
-export const getBanners = async () => {
+const getBanners = async () => {
   return await callApi(path)
 }
 
-export const getBannerById = async ({ id }) => {
+const getBannerById = async ({ id }) => {
   return await callApi(path, {
     body: {
       id

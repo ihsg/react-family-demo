@@ -1,7 +1,6 @@
 import { fetch } from 'whatwg-fetch'
 
 export default async (path, options) => {
-
   const response = await fetch(`/api/${path}`, options)
 
   let json
@@ -20,7 +19,7 @@ export default async (path, options) => {
   } else {
     return {
       ok: response.ok,
-      error: json
+      result: json
     }
   }
 }

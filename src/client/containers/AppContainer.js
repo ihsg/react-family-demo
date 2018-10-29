@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { loadBanners } from '../actions'
+import { apiBannersRequest } from '../actions'
 import App from '../components/App'
 
 const mapStateToProps = (state, ownProps) => {
@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onClick: () => {
-      dispatch(loadBanners())
+      dispatch(apiBannersRequest())
     }
   }
 }

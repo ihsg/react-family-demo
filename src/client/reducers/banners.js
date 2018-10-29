@@ -1,22 +1,29 @@
-import { LOAD_BANNERS, RECEIVE_BANNERS } from '../actions'
+import { API_BANNERS_REQUEST, API_BANNERS_SUCCESS, API_BANNERS_FAILURE } from "../actions";
 
 const initState = {
+  loading: false,
   bannerList: [],
-  loading: false
+  errorMessage: undefined
 }
 
 export default (state = initState, action) => {
   switch (action.type) {
-    case LOAD_BANNERS:
+    case API_BANNERS_REQUEST:
       return {
         ...state,
         loading: true
       }
-    case RECEIVE_BANNERS:
+    case API_BANNERS_SUCCESS:
       return {
         ...state,
         loading: false,
-        bannerList: action.bannerList
+        bannerList: action.payload
+      }
+    case API_BANNERS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        errorMessage: action.payload
       }
     default:
       return state

@@ -5,10 +5,10 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import Router from './router'
 import createStore from './store'
-import modules from './models'
+import sagas from './sagas'
 
 const store = createStore()
-store.runSaga(modules)
+store.runSaga(sagas)
 
 const renderApp = () => render(
   <Provider store={store}>
