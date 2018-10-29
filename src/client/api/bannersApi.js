@@ -1,19 +1,16 @@
-import callApi from './callApi'
-const path = 'bannersss'
+import callApi from './callApi';
 
-const getBanners = async () => {
-  return await callApi(path)
-}
+const path = 'bannersss';
 
-const getBannerById = async ({ id }) => {
-  return await callApi(path, {
-    body: {
-      id
-    }
-  })
-}
+const getBanners = async () => await callApi(path);
+
+const getBannerById = async ({ id }) => await callApi(path, {
+  body: {
+    id,
+  },
+});
 
 export default {
   getBanners,
-  getBannerById
-}
+  getBannerById,
+};

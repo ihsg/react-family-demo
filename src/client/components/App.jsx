@@ -1,22 +1,26 @@
-import React, { Component } from 'react'
-import './app.scss'
+import React from 'react';
+import PropTypes from 'prop-types';
+import './app.scss';
 
-export default class App extends Component {
-  render() {
-    const { onClick, loading, bannerList } = this.props
-    return (
-      <div>
-        <h1 className="test">Hello, welcome to the React Family Demo!</h1>
-        <button className="btnTest" onClick={onClick}>Test Action</button>
-        {loading ? (<div className="loading" />) : null}
-        {bannerList.map((b, index) => {
-          return (
-            <div style={{ textAlign: 'center' }}>
-              <img src={b.imageUrl} />
-            </div>
-          )
-        })}
+const App = ({ onClick, loading, bannerList }) => (
+  <div>
+    <h1 className="test">Hello, welcome to the React Family Demo!</h1>
+    <button className="btnTest" onClick={onClick} type="button">
+      Test Action
+    </button>
+    {loading ? (<div className="loading" />) : null}
+    {bannerList.map(b => (
+      <div style={{ textAlign: 'center' }}>
+        <img src={b.imageUrl} alt="test" />
       </div>
-    )
-  }
-}
+    ))}
+  </div>
+);
+
+App.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  bannerList: PropTypes.array.isRequired,
+};
+
+export default App;

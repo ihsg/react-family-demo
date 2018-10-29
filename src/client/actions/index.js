@@ -1,1 +1,1 @@
-export * from './bannersAction'
+export * from './bannersAction';

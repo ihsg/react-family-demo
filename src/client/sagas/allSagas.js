@@ -1,5 +1,5 @@
-import bannersSaga from './bannersSaga'
+import bannersSaga from './bannersSaga';
 
 export default [
-  ...bannersSaga
-]
+  ...bannersSaga,
+];
