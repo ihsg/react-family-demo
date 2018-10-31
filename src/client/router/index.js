@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 import root from './root';
 import { userLogin } from './paths';
 
@@ -44,12 +46,20 @@ const PrivateRoute = ({ isLogin, component: Component, ...rest }) => (
   />
 );
 
-export default () => (
+const RootRouter = ({ history }) => (
   <Router>
-    <Switch>
-      {
-        configRouter()
-      }
-    </Switch>
+    <ConnectedRouter history={history}>
+      <Switch>
+        {
+          configRouter()
+        }
+      </Switch>
+    </ConnectedRouter>
   </Router>
 );
+
+RootRouter.propTypes = {
+  history: PropTypes.object.isRequired,
+};
+
+export default RootRouter;

@@ -2,16 +2,19 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import Router from './router';
+import { createBrowserHistory } from 'history';
+import RootRouter from './router';
 import createStore from './store';
 import sagas from './sagas';
 
-const store = createStore();
+const history = createBrowserHistory();
+
+const store = createStore({ history });
 store.runSaga(sagas);
 
 const renderApp = () => render(
   <Provider store={store}>
-    <Router />
+    <RootRouter history={history} />
   </Provider>,
   document.getElementById('root'),
 );
