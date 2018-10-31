@@ -5,8 +5,6 @@
 .idea/
 .vscode
 
-build/
-
 # mac OS 
 .DS_Store
 
@@ -17,7 +15,6 @@ npm-debug.log
 
 .cache
 dist/
-build/
 vendor/
 stats.json
 
