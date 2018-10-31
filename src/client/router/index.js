@@ -17,12 +17,12 @@ const formatPathData = (route) => {
 const configRouter = () => {
   pathDatas = [];
   formatPathData(root);
-  const router = pathDatas.map(item => (<RouteWapper key={item.path} {...item} />));
+  const router = pathDatas.map(item => (<RouteWrapper key={item.path} {...item} />));
   console.log(router);
   return router;
 };
 
-const RouteWapper = ({ ...rest }) => {
+const RouteWrapper = ({ ...rest }) => {
   const { requireAuthorization } = rest;
   const isLogin = false; // TODO: connect to store
   return (requireAuthorization ? (<PrivateRoute isLogin={isLogin} {...rest} />) : (<Route {...rest} />));
