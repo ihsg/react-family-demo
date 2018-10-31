@@ -1,5 +1,1 @@
-import * as bannersApi from './bannersApi';
-
-export default {
-  bannersApi,
-};
+export * from './bannersApi';

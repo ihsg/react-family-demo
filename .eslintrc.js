@@ -34,6 +34,6 @@ module.exports = {
     "react/forbid-prop-object": [0],
     "react/forbid-prop-types": [0],
     "react/no-danger": [0],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    // "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
   }
 };
