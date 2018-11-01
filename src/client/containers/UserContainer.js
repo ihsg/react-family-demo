@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
-import { apiBannersRequest } from '../actions';
+import { userLogoutRequest } from '../actions';
 import UserPage from '../components/user/UserPage';
 
 const mapStateToProps = (state) => {
-  const { loading, bannerList } = state.banners;
+  const { loading, isLogin } = state.user;
   return {
     loading,
-    bannerList,
+    isLogin,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   onClick: () => {
-    dispatch(apiBannersRequest());
+    dispatch(userLogoutRequest());
   },
 });
 

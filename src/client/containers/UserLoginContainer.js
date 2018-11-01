@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
-import { apiBannersRequest } from '../actions';
+import { userLoginRequest } from '../actions';
 import LoginPage from '../components/user/LoginPage';
 
 const mapStateToProps = (state) => {
-  const { loading, bannerList } = state.banners;
+  const { location } = state.router;
+  const { loading, isLogin } = state.user;
   return {
     loading,
-    bannerList,
+    isLogin,
+    from: location && location.state && location.state.from,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   onClick: () => {
-    dispatch(apiBannersRequest());
+    dispatch(userLoginRequest());
   },
 });
 

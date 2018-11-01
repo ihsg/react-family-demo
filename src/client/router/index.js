@@ -16,25 +16,25 @@ const formatPathData = (route) => {
   });
 };
 
-const configRouter = () => {
+const configRouter = ({ isLogin }) => {
   pathDatas = [];
   formatPathData(root);
-  const router = pathDatas.map(item => (<RouteWrapper key={item.path} {...item} />));
+  const router = pathDatas.map(item => (<RouteWrapper key={item.path} isLogin={isLogin} {...item} />));
   console.log(router);
   return router;
 };
 
 const RouteWrapper = ({ ...rest }) => {
-  const { requireAuthorization } = rest;
-  const isLogin = false; // TODO: connect to store
-  return (requireAuthorization ? (<PrivateRoute isLogin={isLogin} {...rest} />) : (<Route {...rest} />));
+  const { requireAuthorization, isLogin } = rest;
+  const loggedIn = isLogin();
+  return (requireAuthorization ? (<PrivateRoute loggedIn={loggedIn} {...rest} />) : (<Route {...rest} />));
 };
 
-const PrivateRoute = ({ isLogin, component: Component, ...rest }) => (
+const PrivateRoute = ({ loggedIn, component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props => (
-      isLogin ? (<Component {...props} />) : (
+      loggedIn ? (<Component {...props} />) : (
         <Redirect to={{
           pathname: userLogin,
           state: {
@@ -46,12 +46,12 @@ const PrivateRoute = ({ isLogin, component: Component, ...rest }) => (
   />
 );
 
-const RootRouter = ({ history }) => (
+const RootRouter = ({ history, isLogin }) => (
   <Router>
     <ConnectedRouter history={history}>
       <Switch>
         {
-          configRouter()
+          configRouter({ isLogin })
         }
       </Switch>
     </ConnectedRouter>
@@ -60,6 +60,7 @@ const RootRouter = ({ history }) => (
 
 RootRouter.propTypes = {
   history: PropTypes.object.isRequired,
+  isLogin: PropTypes.func.isRequired,
 };
 
 export default RootRouter;

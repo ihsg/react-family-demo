@@ -6,6 +6,7 @@ import { createBrowserHistory } from 'history';
 import RootRouter from './router';
 import createStore from './store';
 import sagas from './sagas';
+import { isLogin } from './selectors/userSelector';
 
 const history = createBrowserHistory();
 
@@ -14,7 +15,7 @@ store.runSaga(sagas);
 
 const renderApp = () => render(
   <Provider store={store}>
-    <RootRouter history={history} />
+    <RootRouter history={history} isLogin={() => isLogin(store.getState())} />
   </Provider>,
   document.getElementById('root'),
 );

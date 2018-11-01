@@ -23,7 +23,7 @@ const App = ({ onClick, loading, bannerList }) => (
     </button>
     {loading ? (<div className="loading" />) : null}
     {bannerList.map(b => (
-      <div style={{ textAlign: 'center' }}>
+      <div key={b.bannerId} style={{ textAlign: 'center' }}>
         <img src={b.imageUrl} alt="test" />
       </div>
     ))}
